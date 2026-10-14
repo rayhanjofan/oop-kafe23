@@ -20,7 +20,7 @@ public class Main {
         //
         // Kerangka:
         //   System.out.println("____");
-        System.out.println("Welcome To Polinema Cafe");
+        System.out.println("Welcome to Polinema Cafe");
         // Bagian 7: lanjutkan di sini (buat Cafe, isi data contoh, jalankan CafeApp).
     }
 }
