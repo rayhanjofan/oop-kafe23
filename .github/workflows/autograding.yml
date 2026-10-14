@@ -1,0 +1,168 @@
+name: Autograding Tests
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Bagian 1 Main Output Test
+        id: test-p01mainoutputtest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 1 Main Output Test
+          command: mvn -q test -Dtest=P01MainOutputTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 5
+
+      - name: Bagian 2 Supplier Test
+        id: test-p02suppliertest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 2 Supplier Test
+          command: mvn -q test -Dtest=P02SupplierTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 5
+
+      - name: Bagian 2 Beverage Test
+        id: test-p02beveragetest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 2 Beverage Test
+          command: mvn -q test -Dtest=P02BeverageTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 10
+
+      - name: Bagian 3 Encapsulation Test
+        id: test-p03encapsulationtest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 3 Encapsulation Test
+          command: mvn -q test -Dtest=P03EncapsulationTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 10
+
+      - name: Bagian 3 Customer Test
+        id: test-p03customertest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 3 Customer Test
+          command: mvn -q test -Dtest=P03CustomerTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 10
+
+      - name: Bagian 4 Association Test
+        id: test-p04associationtest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 4 Association Test
+          command: mvn -q test -Dtest=P04AssociationTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 5
+
+      - name: Bagian 4 Counter Aggregation Test
+        id: test-p04counteraggregationtest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 4 Counter Aggregation Test
+          command: mvn -q test -Dtest=P04CounterAggregationTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 10
+
+      - name: Bagian 4 Composition Test
+        id: test-p04customercardcompositiontest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 4 Composition Test
+          command: mvn -q test -Dtest=P04CustomerCardCompositionTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 5
+
+      - name: Bagian 4 Dependency Test
+        id: test-p04cashierdependencytest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 4 Dependency Test
+          command: mvn -q test -Dtest=P04CashierDependencyTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 5
+
+      - name: Bagian 5 Inheritance Test
+        id: test-p06inheritancetest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 5 Inheritance Test
+          command: mvn -q test -Dtest=P06InheritanceTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 10
+
+      - name: Bagian 6 Overriding Test
+        id: test-p07overridetest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 6 Overriding Test
+          command: mvn -q test -Dtest=P07OverrideTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 10
+
+      - name: Bagian 6 Overloading Test
+        id: test-p07overloadtest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 6 Overloading Test
+          command: mvn -q test -Dtest=P07OverloadTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 5
+
+      - name: Bagian 7 Cafe Test
+        id: test-p08cafetest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 7 Cafe Test
+          command: mvn -q test -Dtest=P08CafeTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 5
+
+      - name: Bagian 7 Console App Test
+        id: test-p08cafeapptest
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Bagian 7 Console App Test
+          command: mvn -q test -Dtest=P08CafeAppTest -DfailIfNoTests=true
+          timeout: 10
+          max-score: 5
+
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          TEST-P01MAINOUTPUTTEST_RESULTS: "${{ steps.test-p01mainoutputtest.outputs.result }}"
+          TEST-P02SUPPLIERTEST_RESULTS: "${{ steps.test-p02suppliertest.outputs.result }}"
+          TEST-P02BEVERAGETEST_RESULTS: "${{ steps.test-p02beveragetest.outputs.result }}"
+          TEST-P03ENCAPSULATIONTEST_RESULTS: "${{ steps.test-p03encapsulationtest.outputs.result }}"
+          TEST-P03CUSTOMERTEST_RESULTS: "${{ steps.test-p03customertest.outputs.result }}"
+          TEST-P04ASSOCIATIONTEST_RESULTS: "${{ steps.test-p04associationtest.outputs.result }}"
+          TEST-P04COUNTERAGGREGATIONTEST_RESULTS: "${{ steps.test-p04counteraggregationtest.outputs.result }}"
+          TEST-P04CUSTOMERCARDCOMPOSITIONTEST_RESULTS: "${{ steps.test-p04customercardcompositiontest.outputs.result }}"
+          TEST-P04CASHIERDEPENDENCYTEST_RESULTS: "${{ steps.test-p04cashierdependencytest.outputs.result }}"
+          TEST-P06INHERITANCETEST_RESULTS: "${{ steps.test-p06inheritancetest.outputs.result }}"
+          TEST-P07OVERRIDETEST_RESULTS: "${{ steps.test-p07overridetest.outputs.result }}"
+          TEST-P07OVERLOADTEST_RESULTS: "${{ steps.test-p07overloadtest.outputs.result }}"
+          TEST-P08CAFETEST_RESULTS: "${{ steps.test-p08cafetest.outputs.result }}"
+          TEST-P08CAFEAPPTEST_RESULTS: "${{ steps.test-p08cafeapptest.outputs.result }}"
+        with:
+          runners: test-p01mainoutputtest,test-p02suppliertest,test-p02beveragetest,test-p03encapsulationtest,test-p03customertest,test-p04associationtest,test-p04counteraggregationtest,test-p04customercardcompositiontest,test-p04cashierdependencytest,test-p06inheritancetest,test-p07overridetest,test-p07overloadtest,test-p08cafetest,test-p08cafeapptest

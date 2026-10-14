@@ -1,0 +1,52 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+}
+skinparam dpi 110
+hide empty members
+class MenuItem <<buat kelas ini>> {
+  #name : String
+  #year : int
+  -available : boolean
+  +MenuItem(name : String, year : int)
+  +getName() : String
+  +getYear() : int
+  +setName(name : String) : void
+  +setYear(year : int) : void
+  +isAvailable() : boolean
+  +sell() : boolean
+  +restock() : void
+}
+class Beverage {
+  -code : String
+  -supplier : Supplier
+  +Beverage(code : String, name : String, year : int)
+  +getCode() : String
+  +getSupplier() : Supplier
+  +setSupplier(supplier : Supplier) : void
+}
+class Food <<buat kelas ini>> {
+  -prepMinutes : int
+  +Food(name : String, year : int, prepMinutes : int)
+  +getPrepMinutes() : int
+}
+class Dessert <<buat kelas ini>> {
+  -calories : int
+  +Dessert(name : String, year : int, calories : int)
+  +getCalories() : int
+}
+class Supplier
+MenuItem <|-- Beverage
+MenuItem <|-- Food
+MenuItem <|-- Dessert
+Beverage --> "0..1" Supplier
+note right of MenuItem
+  name dan year protected.
+  Validasi setName/setYear
+  (year >= 2000) pindah ke sini.
+end note
+@enduml

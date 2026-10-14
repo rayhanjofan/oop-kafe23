@@ -1,0 +1,50 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+}
+skinparam dpi 110
+hide empty members
+class Cafe <<buat kelas ini>> {
+  -name : String
+  -items : MenuItem[20]
+  -itemCount : int
+  -customers : Customer[10]
+  -customerCount : int
+  +Cafe(name : String)
+  +getName() : String
+  +addItem(item : MenuItem) : boolean
+  +addCustomer(customer : Customer) : boolean
+  +getItems() : MenuItem[]
+  +getCustomers() : Customer[]
+  +findItemByName(name : String) : MenuItem
+  +findCustomer(customerId : String) : Customer
+  +searchByKeyword(keyword : String) : MenuItem[]
+  +sell(customerId : String, itemName : String) : boolean
+  +refund(customerId : String, itemName : String) : boolean
+}
+class CafeApp <<buat kelas ini>> {
+  -cafe : Cafe
+  -in : Scanner
+  -out : PrintStream
+  +CafeApp(cafe : Cafe, in : Scanner, out : PrintStream)
+  +run() : void
+}
+class Main {
+  +main(args : String[]) : void
+}
+class MenuItem
+class Customer
+Main ..> Cafe : membuat
+Main ..> CafeApp : membuat dan run()
+CafeApp --> "1" Cafe
+Cafe o-- "0..20" MenuItem
+Cafe o-- "0..10" Customer
+note right of Cafe
+  Tanpa System.out.
+  Semua tampilan di CafeApp.
+end note
+@enduml

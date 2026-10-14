@@ -1,0 +1,63 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+}
+skinparam dpi 110
+hide empty members
+class MenuItem {
+  #name : String
+  #year : int
+  -available : boolean
+  -extraPrice : int
+  +MenuItem(name : String, year : int)
+  +price() : int
+  +describe() : String
+  +toString() : String
+  +addExtra() : void
+  +addExtra(amount : int) : void
+  +getTotalPrice() : int
+}
+class Beverage {
+  -code : String
+  -supplier : Supplier
+  +Beverage(code : String, name : String, year : int)
+  +Beverage(code : String, name : String, year : int, supplier : Supplier)
+  +price() : int
+  +describe() : String
+}
+class Food {
+  -prepMinutes : int
+  +Food(name : String, year : int, prepMinutes : int)
+  +price() : int
+  +describe() : String
+}
+class Dessert {
+  -calories : int
+  +Dessert(name : String, year : int, calories : int)
+  +Dessert(name : String, year : int)
+}
+MenuItem <|-- Beverage
+MenuItem <|-- Food
+MenuItem <|-- Dessert
+note bottom of MenuItem
+  price() = 20000
+  addExtra() menambah 5000
+  getTotalPrice() = price() + semua tambahan
+end note
+note bottom of Beverage
+  price() = 25000
+  describe(): super + " from " + pemasok
+end note
+note bottom of Food
+  price() = 35000
+  describe(): super + " [N min]"
+end note
+note bottom of Dessert
+  TIDAK override price()
+  Dessert(name, year) -> calories 250
+end note
+@enduml

@@ -1,0 +1,85 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+}
+skinparam dpi 110
+hide empty members
+class MenuItem {
+  #name : String
+  #year : int
+  -available : boolean
+  -extraPrice : int
+  +price() : int
+  +describe() : String
+  +sell() : boolean
+  +restock() : void
+  +addExtra() : void
+  +addExtra(amount : int) : void
+  +getTotalPrice() : int
+}
+class Beverage {
+  -code : String
+  -supplier : Supplier
+  +price() : int
+  +describe() : String
+}
+class Food {
+  -prepMinutes : int
+  +price() : int
+  +describe() : String
+}
+class Dessert {
+  -calories : int
+}
+class Supplier {
+  -name : String
+  -city : String
+  +getInfo() : String
+}
+class Customer {
+  -customerId : String
+  -name : String
+  -itemCount : int
+  +canOrder() : boolean
+  +addOrder() : boolean
+  +removeOrder() : boolean
+}
+class LoyaltyCard {
+  -number : String
+}
+class Counter {
+  -code : String
+  -beverages : Beverage[5]
+  +addBeverage(beverage : Beverage) : boolean
+  +findByCode(code : String) : Beverage
+  +countAvailable() : int
+}
+class Cashier {
+  +sell(customer : Customer, beverage : Beverage) : boolean
+  +refund(customer : Customer, beverage : Beverage) : boolean
+}
+class Cafe {
+  -items : MenuItem[20]
+  -customers : Customer[10]
+  +sell(customerId : String, itemName : String) : boolean
+  +refund(customerId : String, itemName : String) : boolean
+}
+class CafeApp {
+  +run() : void
+}
+MenuItem <|-- Beverage
+MenuItem <|-- Food
+MenuItem <|-- Dessert
+Beverage --> "0..1" Supplier
+Customer *-- LoyaltyCard
+Counter o-- "0..5" Beverage
+Cashier ..> Customer
+Cashier ..> Beverage
+Cafe o-- "0..20" MenuItem
+Cafe o-- "0..10" Customer
+CafeApp --> Cafe
+@enduml

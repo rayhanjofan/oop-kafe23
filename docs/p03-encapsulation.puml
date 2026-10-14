@@ -1,0 +1,56 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+}
+skinparam dpi 110
+hide empty members
+class Supplier {
+  -name : String
+  -city : String
+  +Supplier(name : String, city : String)
+  +getName() : String
+  +getCity() : String
+  +getInfo() : String
+}
+class Beverage {
+  -code : String
+  -name : String
+  -year : int
+  -available : boolean
+  +Beverage(code : String, name : String, year : int)
+  +getCode() : String
+  +getName() : String
+  +getYear() : int
+  +isAvailable() : boolean
+  +sell() : boolean
+  +restock() : void
+  +setName(name : String) : void
+  +setYear(year : int) : void
+}
+class Customer {
+  -customerId : String
+  -name : String
+  -itemCount : int
+  +Customer(customerId : String, name : String)
+  +getCustomerId() : String
+  +getName() : String
+  +setName(name : String) : void
+  +getItemCount() : int
+  +canOrder() : boolean
+  +addOrder() : boolean
+  +removeOrder() : boolean
+}
+note right of Customer
+  itemCount selalu 0..5
+  customerId dan itemCount
+  tidak punya setter
+end note
+note right of Beverage
+  year >= 2000
+  code, available: tanpa setter
+end note
+@enduml

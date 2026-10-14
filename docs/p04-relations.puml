@@ -1,0 +1,77 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+}
+skinparam dpi 110
+hide empty members
+class Supplier {
+  -name : String
+  -city : String
+  +Supplier(name : String, city : String)
+  +getName() : String
+  +getCity() : String
+  +getInfo() : String
+}
+class Beverage {
+  -code : String
+  -name : String
+  -year : int
+  -available : boolean
+  -supplier : Supplier
+  +Beverage(code : String, name : String, year : int)
+  +getCode() : String
+  +getName() : String
+  +getYear() : int
+  +isAvailable() : boolean
+  +sell() : boolean
+  +restock() : void
+  +setName(name : String) : void
+  +setYear(year : int) : void
+  +setSupplier(supplier : Supplier) : void
+  +getSupplier() : Supplier
+}
+class Customer {
+  -customerId : String
+  -name : String
+  -itemCount : int
+  -card : LoyaltyCard
+  +Customer(customerId : String, name : String)
+  +getCustomerId() : String
+  +getName() : String
+  +setName(name : String) : void
+  +getItemCount() : int
+  +getCard() : LoyaltyCard
+  +canOrder() : boolean
+  +addOrder() : boolean
+  +removeOrder() : boolean
+}
+class LoyaltyCard <<buat kelas ini>> {
+  -number : String
+  +LoyaltyCard(number : String)
+  +getNumber() : String
+}
+class Counter <<buat kelas ini>> {
+  -code : String
+  -beverages : Beverage[5]
+  -count : int
+  +Counter(code : String)
+  +getCode() : String
+  +getBeverageCount() : int
+  +addBeverage(beverage : Beverage) : boolean
+  +findByCode(code : String) : Beverage
+  +countAvailable() : int
+}
+class Cashier <<buat kelas ini>> {
+  +sell(customer : Customer, beverage : Beverage) : boolean
+  +refund(customer : Customer, beverage : Beverage) : boolean
+}
+Beverage "0..*" --> "0..1" Supplier : supplier
+Customer "1" *-- "1" LoyaltyCard : card "LC-" + customerId
+Counter "1" o-- "0..5" Beverage : beverages
+Cashier ..> Customer : <<parameter>>
+Cashier ..> Beverage : <<parameter>>
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName SansSerif
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+}
+skinparam dpi 110
+hide empty members
+class Supplier {
+  +name : String
+  +city : String
+  +Supplier(name : String, city : String)
+  +getName() : String
+  +getCity() : String
+  +getInfo() : String
+}
+class Beverage {
+  +code : String
+  +name : String
+  +year : int
+  +available : boolean
+  +Beverage(code : String, name : String, year : int)
+  +getCode() : String
+  +getName() : String
+  +getYear() : int
+  +isAvailable() : boolean
+  +sell() : boolean
+  +restock() : void
+}
+@enduml
