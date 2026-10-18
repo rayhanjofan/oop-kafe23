@@ -18,10 +18,10 @@ package id.ac.polinema.uts.kafe;
  */
 public class Beverage {
 
-    public String code;
-    public String name;
-    public int year;
-    public boolean available;
+    private String code;
+    private String name;
+    private int year;
+    private boolean available;
 
     /**
      * Membuat minuman baru yang masih ada stoknya (belum terjual).
@@ -42,9 +42,10 @@ public class Beverage {
         //   setName(____);
         //   setYear(____);
         this.code = code;
-        this.name = name;
-        this.year = year;
         this.available = true;
+
+        setName(name);
+        setYear(year);
     }
 
     public String getCode() {
@@ -117,7 +118,10 @@ public class Beverage {
         //       throw new IllegalArgumentException("____");
         //   }
         //   this.name = name;
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
+        this.name = name;
     }
 
     /**
@@ -132,6 +136,9 @@ public class Beverage {
         //       throw new IllegalArgumentException("____");
         //   }
         //   this.year = year;
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (year < 2000) {
+            throw new IllegalArgumentException("Year cannot be less than 2000");
+        }
+        this.year = year;
     }
 }

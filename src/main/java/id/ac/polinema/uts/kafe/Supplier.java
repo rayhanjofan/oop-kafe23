@@ -16,8 +16,8 @@ package id.ac.polinema.uts.kafe;
  */
     public class Supplier {
 
-    public String name;
-    public String city;
+    private String name;
+    private String city;
 
     /** Membuat pemasok dengan nama dan kota asal. */
     public Supplier(String name, String city) {
