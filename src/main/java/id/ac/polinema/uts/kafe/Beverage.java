@@ -44,10 +44,7 @@ public class Beverage {
         this.code = code;
         this.name = name;
         this.year = year;
-        this.available = false;
-
-        setName(name);
-        setYear(year);
+        this.available = true;
     }
 
     public String getCode() {
@@ -74,7 +71,7 @@ public class Beverage {
         //
         // Kerangka:
         //   return ____;
-        return true;
+        return available;
     }
 
     /**
@@ -91,7 +88,7 @@ public class Beverage {
         //   }
         //   ____ = false;
         //   return true;
-        if ( !available) {
+        if (!available) {
             return false;
         }
         available = false;
@@ -104,7 +101,7 @@ public class Beverage {
         //
         // Kerangka:
         //   ____ = true;
-        available = true;
+       available = true;
     }
 
     /**
@@ -120,10 +117,7 @@ public class Beverage {
         //       throw new IllegalArgumentException("____");
         //   }
         //   this.name = name;
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Name cannot be null or empty");
-        }
-        this.name = name;
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 
     /**
@@ -138,9 +132,6 @@ public class Beverage {
         //       throw new IllegalArgumentException("____");
         //   }
         //   this.year = year;
-        if (year < 2000) {
-            throw new IllegalArgumentException("Year cannot be less than 2000");
-        }
-        this.year = year;
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 }
