@@ -1,5 +1,6 @@
 package id.ac.polinema.uts.kafe;
 
+
 /**
  * Bagian 2: pemasok minuman.
  *
@@ -13,7 +14,10 @@ package id.ac.polinema.uts.kafe;
  *   public ____ name;
  *   public ____ city;
  */
-public class Supplier {
+    public class Supplier {
+
+    public String name;
+    public String city;
 
     /** Membuat pemasok dengan nama dan kota asal. */
     public Supplier(String name, String city) {
@@ -23,7 +27,9 @@ public class Supplier {
         // Kerangka:
         //   this.name = ____;
         //   this.city = ____;
-        throw new UnsupportedOperationException("Not implemented yet");
+        this.name = name;
+        this.city = city;
+        
     }
 
     public String getName() {
@@ -31,12 +37,12 @@ public class Supplier {
         //
         // Kerangka:
         //   return ____;
-        throw new UnsupportedOperationException("Not implemented yet");
+        return name;
     }
 
     public String getCity() {
         // TODO Bantuan: sama seperti getName.
-        throw new UnsupportedOperationException("Not implemented yet");
+        return city;
     }
 
     /** Teks berbentuk "nama (kota)". Contoh: Kopi Nusantara (Malang). */
@@ -45,6 +51,7 @@ public class Supplier {
         //
         // Kerangka:
         //   return name + " (" + ____ + ")";
-        throw new UnsupportedOperationException("Not implemented yet");
+        return name + " (" + name + ")";
     }
+
 }
