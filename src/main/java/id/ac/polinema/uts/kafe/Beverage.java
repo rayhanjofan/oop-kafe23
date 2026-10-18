@@ -45,6 +45,9 @@ public class Beverage {
         this.name = name;
         this.year = year;
         this.available = false;
+
+        setName(name);
+        setYear(year);
     }
 
     public String getCode() {
@@ -71,7 +74,7 @@ public class Beverage {
         //
         // Kerangka:
         //   return ____;
-        return available;
+        return true;
     }
 
     /**
