@@ -16,6 +16,9 @@ package id.ac.polinema.uts.kafe;
  */
 public class Customer {
 
+    private String customerId;
+    private String name;
+    private int itemCount;
     /**
      * Membuat pelanggan yang belum punya pesanan.
      * customerId dan name tidak boleh null atau kosong: lempar
@@ -31,17 +34,17 @@ public class Customer {
         //   }
         //   this.customerId = customerId;
         //   setName(____);
-        throw new UnsupportedOperationException("Not implemented yet");
+
     }
 
     public String getCustomerId() {
         // TODO Bantuan: kembalikan data yang disimpan constructor.
-        throw new UnsupportedOperationException("Not implemented yet");
+        return customerId;
     }
 
     public String getName() {
         // TODO Bantuan: sama seperti getCustomerId.
-        throw new UnsupportedOperationException("Not implemented yet");
+        return name;
     }
 
     /** Nama tidak boleh null atau kosong: lempar IllegalArgumentException dan biarkan nama lama. */
@@ -53,12 +56,15 @@ public class Customer {
         //       throw new IllegalArgumentException("____");
         //   }
         //   this.name = name;
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
+        this.name = name;
     }
 
     public int getItemCount() {
         // TODO Bantuan: kembalikan jumlah item pesanan saat ini.
-        throw new UnsupportedOperationException("Not implemented yet");
+        return itemCount;
     }
 
     /** True jika pelanggan masih boleh memesan (batasnya 5 item per pesanan). */
@@ -67,7 +73,7 @@ public class Customer {
         //
         // Kerangka:
         //   return itemCount ____ 5;
-        throw new UnsupportedOperationException("Not implemented yet");
+        return itemCount < 5;
     }
 
     /** Menambah jumlah item pesanan. Jika sudah di batas, tidak berubah dan hasilnya false. */
@@ -81,7 +87,11 @@ public class Customer {
         //   }
         //   itemCount++;
         //   return true;
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (!canOrder()) {
+            return false;
+        }
+        itemCount ++;
+        return true;
     }
 
     /** Mengurangi jumlah item pesanan. Jika sudah tidak ada pesanan, tidak berubah dan hasilnya false. */
@@ -94,6 +104,10 @@ public class Customer {
         //   }
         //   itemCount--;
         //   return true;
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (itemCount == 0) {
+            return false;
+        }
+        itemCount--;
+        return true;
     }
 }
