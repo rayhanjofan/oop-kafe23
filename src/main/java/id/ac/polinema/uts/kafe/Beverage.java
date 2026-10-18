@@ -18,6 +18,11 @@ package id.ac.polinema.uts.kafe;
  */
 public class Beverage {
 
+    public String code;
+    public String name;
+    public int year;
+    public boolean available;
+
     /**
      * Membuat minuman baru yang masih ada stoknya (belum terjual).
      * Bagian 3: code tidak boleh kosong; name dan year divalidasi seperti setter-nya.
@@ -36,7 +41,10 @@ public class Beverage {
         // Kerangka (Bagian 3): ganti dua baris name dan year dengan pemanggilan setter.
         //   setName(____);
         //   setYear(____);
-        throw new UnsupportedOperationException("Not implemented yet");
+        this.code = code;
+        this.name = name;
+        this.year = year;
+        this.available = false;
     }
 
     public String getCode() {
@@ -44,17 +52,17 @@ public class Beverage {
         //
         // Kerangka:
         //   return ____;
-        throw new UnsupportedOperationException("Not implemented yet");
+        return code;
     }
 
     public String getName() {
         // TODO Bantuan: sama seperti getCode.
-        throw new UnsupportedOperationException("Not implemented yet");
+        return name;
     }
 
     public int getYear() {
         // TODO Bantuan: sama seperti getCode.
-        throw new UnsupportedOperationException("Not implemented yet");
+        return year;
     }
 
     /** True jika minuman masih ada stok (belum terjual). */
@@ -63,7 +71,7 @@ public class Beverage {
         //
         // Kerangka:
         //   return ____;
-        throw new UnsupportedOperationException("Not implemented yet");
+        return available;
     }
 
     /**
@@ -80,7 +88,11 @@ public class Beverage {
         //   }
         //   ____ = false;
         //   return true;
-        throw new UnsupportedOperationException("Not implemented yet");
+        if ( !available) {
+            return false;
+        }
+        available = false;
+        return true;
     }
 
     /** Mengembalikan stok (misalnya karena refund): minuman bisa dijual lagi. */
@@ -89,7 +101,7 @@ public class Beverage {
         //
         // Kerangka:
         //   ____ = true;
-        throw new UnsupportedOperationException("Not implemented yet");
+        available = true;
     }
 
     /**
@@ -105,7 +117,10 @@ public class Beverage {
         //       throw new IllegalArgumentException("____");
         //   }
         //   this.name = name;
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
+        this.name = name;
     }
 
     /**
@@ -120,6 +135,9 @@ public class Beverage {
         //       throw new IllegalArgumentException("____");
         //   }
         //   this.year = year;
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (year < 2000) {
+            throw new IllegalArgumentException("Year cannot be less than 2000");
+        }
+        this.year = year;
     }
 }
