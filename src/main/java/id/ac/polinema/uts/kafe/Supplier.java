@@ -51,7 +51,6 @@ package id.ac.polinema.uts.kafe;
         //
         // Kerangka:
         //   return name + " (" + ____ + ")";
-        return name + " (" + name + ")";
+        return name + " (" + city + ")";
     }
-
 }
