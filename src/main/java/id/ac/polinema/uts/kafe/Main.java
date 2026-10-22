@@ -1,26 +1,63 @@
+
 package id.ac.polinema.uts.kafe;
 
-/**
- * Titik awal program (satu-satunya method main di proyek ini).
- *
- * Bagian 1: baris PERTAMA output harus persis "Welcome to Polinema Cafe".
- * Setelah itu kamu bebas menambah baris lain untuk bereksperimen.
- *
- * Bagian 7: di bawah baris sapaan, kamu akan membuat Cafe, mengisi data
- * contoh, lalu menjalankan CafeApp. Kerangkanya ada di README.
- */
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
-        // TODO: Tampilkan sebuah teks ke layar.
-        // Di Java, perintahnya berbentuk: System.out.println("teks kamu");
-        // Ganti teks di dalam tanda kutip dengan teks dari soal. Huruf besar-kecil dan
-        // spasi harus persis sama. Tulis perintahnya di dalam kurung kurawal main ini,
-        // lalu jalankan programnya.
-        //
-        // Kerangka:
-        //   System.out.println("____");
+
+        // 1. Menampilkan sapaan pertama
         System.out.println("Welcome to Polinema Cafe");
-        // Bagian 7: lanjutkan di sini (buat Cafe, isi data contoh, jalankan CafeApp).
+
+        // 2. Membuat objek Cafe
+        Cafe cafe = new Cafe("Polinema Cafe");
+
+        // 3. Membuat data pemasok
+        Supplier supplier = new Supplier(
+            "Kopi Nusantara",
+            "Malang"
+        );
+
+        // 4. Menambahkan contoh minuman
+        Beverage beverage = new Beverage(
+            "B001",
+            "Cafe Latte",
+            2015,
+            supplier
+        );
+        cafe.addItem(beverage);
+
+        // 5. Menambahkan contoh makanan
+        Food food = new Food(
+            "Nasi Goreng",
+            2010,
+            15
+        );
+        cafe.addItem(food);
+
+        // 6. Menambahkan contoh dessert
+        Dessert dessert = new Dessert(
+            "Pisang Coklat",
+            2024,
+            300
+        );
+        cafe.addItem(dessert);
+
+        // 7. Mendaftarkan pelanggan contoh
+        Customer customer = new Customer(
+            "C001",
+            "Budi"
+        );
+        cafe.addCustomer(customer);
+
+        // 8. Membuat dan menjalankan aplikasi konsol
+        CafeApp app = new CafeApp(
+            cafe,
+            new Scanner(System.in),
+            System.out
+        );
+
+        app.run();
     }
 }
