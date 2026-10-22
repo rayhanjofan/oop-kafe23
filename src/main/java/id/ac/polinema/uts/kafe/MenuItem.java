@@ -4,6 +4,7 @@ public class MenuItem {
     protected String name;
     protected int year;
     private boolean available;
+    private int extraPrice;
 
     public MenuItem(String name, int year) {
 
@@ -28,13 +29,6 @@ public class MenuItem {
     }
 
     public void setYear(int year) {
-        // TODO Bantuan: pola yang sama dengan setName. Apa syarat tahun yang valid?
-        //
-        // Kerangka:
-        // if (year ____ 2000) {
-        // throw new IllegalArgumentException("____");
-        // }
-        // this.year = year;
         if (year < 2000) {
             throw new IllegalArgumentException("Year cannot be less than 2000");
         }
@@ -55,6 +49,33 @@ public class MenuItem {
 
         public void restock() {
         available = true;
+    }
+
+    public int price() {
+        return 20000;
+    }
+
+    public String describe() {
+        return name +  " (" + year + ")";
+    }
+
+    public String toString() {
+        return describe();
+    }
+
+    public void addExtra() {
+        addExtra(5000);
+    }
+
+    public void addExtra(int amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Extra must be greater than zero ");
+        }
+        extraPrice += amount;
+    }
+
+    public int getTotalPrice() {
+        return price() + extraPrice;
     }
 
 }

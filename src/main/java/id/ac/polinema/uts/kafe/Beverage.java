@@ -18,7 +18,7 @@ package id.ac.polinema.uts.kafe;
  * public ____ year;
  * public ____ available;
  */
-public class Beverage extends MenuItem{
+public class Beverage extends MenuItem {
 
     private String code;
     private Supplier supplier;
@@ -28,7 +28,12 @@ public class Beverage extends MenuItem{
      * Bagian 3: code tidak boleh kosong; name dan year divalidasi seperti
      * setter-nya.
      */
+
     public Beverage(String code, String name, int year) {
+        this(code, name, year, null);
+    }
+
+    public Beverage(String code, String name, int year, Supplier supplier) {
         // TODO Bantuan: isi semua field. Minuman baru: apakah sudah terjual atau belum?
         // Bagian 3: aturan validasi nama dan tahun sama dengan setter. Bisakah
         // constructor
@@ -43,11 +48,12 @@ public class Beverage extends MenuItem{
         // Kerangka (Bagian 3): ganti dua baris name dan year dengan pemanggilan setter.
         // setName(____);
         // setYear(____);
-        super(name,year);
+        super(name, year);
         if (code == null || code.trim().isEmpty()) {
             throw new IllegalArgumentException("Code cannot be null or empty");
         }
         this.code = code;
+        this.supplier = supplier;
     }
 
     public String getCode() {
@@ -64,5 +70,19 @@ public class Beverage extends MenuItem{
 
     public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
+    }
+
+    @Override 
+    public int price() {
+        return 25000;
+    }
+
+    @Override 
+    public String describe() {
+        String supplierName = (supplier == null)
+        ? "Unknown"
+        : supplier.getName();
+
+        return super.describe() + "from" + supplierName;
     }
 }
