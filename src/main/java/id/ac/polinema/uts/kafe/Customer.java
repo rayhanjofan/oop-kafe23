@@ -19,6 +19,8 @@ public class Customer {
     private String customerId;
     private String name;
     private int itemCount;
+    private LoyaltyCard loyaltyCard;
+
     /**
      * Membuat pelanggan yang belum punya pesanan.
      * customerId dan name tidak boleh null atau kosong: lempar
@@ -38,8 +40,8 @@ public class Customer {
             throw new IllegalArgumentException("Customer ID cannot be null or empty");
         }
         this.customerId = customerId;
-        this.itemCount = 0;
         setName(name);
+        this.itemCount = 0;
     }
 
     public String getCustomerId() {
@@ -118,5 +120,9 @@ public class Customer {
         }
         itemCount--;
         return true;
+    }
+
+    public LoyaltyCard getLoyaltyCard() {
+        return loyaltyCard;
     }
 }
