@@ -22,6 +22,7 @@ public class Beverage {
     private String name;
     private int year;
     private boolean available;
+    private Supplier supplier;
 
     /**
      * Membuat minuman baru yang masih ada stoknya (belum terjual).
@@ -143,5 +144,14 @@ public class Beverage {
             throw new IllegalArgumentException("Year cannot be less than 2000");
         }
         this.year = year;
+    }
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public Supplier setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+        return supplier;
     }
 }
