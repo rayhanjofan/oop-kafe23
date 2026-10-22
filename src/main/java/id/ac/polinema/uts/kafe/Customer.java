@@ -34,7 +34,12 @@ public class Customer {
         //   }
         //   this.customerId = customerId;
         //   setName(____);
-
+        if (customerId == null || customerId.trim().isEmpty()) {
+            throw new IllegalArgumentException("Customer ID cannot be null or empty");
+        }
+        this.customerId = customerId;
+        this.itemCount = 0;
+        setName(name);
     }
 
     public String getCustomerId() {
@@ -56,7 +61,7 @@ public class Customer {
         //       throw new IllegalArgumentException("____");
         //   }
         //   this.name = name;
-        if (name == null || name.isEmpty()) {
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
         this.name = name;
@@ -73,7 +78,11 @@ public class Customer {
         //
         // Kerangka:
         //   return itemCount ____ 5;
-        return itemCount < 5;
+        if (itemCount < 5) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /** Menambah jumlah item pesanan. Jika sudah di batas, tidak berubah dan hasilnya false. */
