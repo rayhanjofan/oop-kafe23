@@ -72,17 +72,17 @@ public class Beverage extends MenuItem {
         this.supplier = supplier;
     }
 
-    @Override 
+    @Override
     public int price() {
         return 25000;
     }
 
-    @Override 
+    @Override
     public String describe() {
         String supplierName = (supplier == null)
-        ? "Unknown"
-        : supplier.getName();
+                ? "Unknown"
+                : supplier.getName();
 
-        return super.describe() + "from" + supplierName;
+        return super.describe() + " from " + supplierName;
     }
 }
