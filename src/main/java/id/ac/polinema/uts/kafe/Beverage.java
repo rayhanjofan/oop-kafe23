@@ -41,6 +41,9 @@ public class Beverage {
         // Kerangka (Bagian 3): ganti dua baris name dan year dengan pemanggilan setter.
         //   setName(____);
         //   setYear(____);
+        if (code == null || code.trim().isEmpty()) {
+            throw new IllegalArgumentException("Code cannot be null or empty");
+        }
         this.code = code;
         this.available = true;
 
