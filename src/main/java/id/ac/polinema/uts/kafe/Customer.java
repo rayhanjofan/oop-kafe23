@@ -122,7 +122,7 @@ public class Customer {
         return true;
     }
 
-    public LoyaltyCard getLoyaltyCard() {
+    public LoyaltyCard getCard() {
         return loyaltyCard;
     }
 }
