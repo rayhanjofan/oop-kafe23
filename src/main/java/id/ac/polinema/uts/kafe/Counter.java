@@ -19,20 +19,19 @@ public class Counter {
     }
 
     public boolean addBeverage(Beverage beverage) {
-        if (count < 5) {
-            beverages[count] = beverage;
-            count++;
-            return true;
+        if (beverage == null || count >= beverages.length) {
+            return false;
         }
-        return false;   
+        beverages[count] = beverage;
+        count++;
+        return true;
     }
 
-    public int getBeveragesCount() {
+    public int getBeverageCount() {
         return count;
     }
 
-
-    public Beverage findByCode (String code) {
+    public Beverage findByCode(String code) {
         for (int i = 0; i < count; i++) {
             if (beverages[i].getCode().equals(code)) {
                 return beverages[i];
@@ -51,4 +50,3 @@ public class Counter {
         return availableCount;
     }
 }
-

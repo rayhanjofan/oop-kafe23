@@ -7,14 +7,16 @@ package id.ac.polinema.uts.kafe;
  * memanggilnya persis seperti yang tertulis di sini.
  *
  * Field tidak dideklarasikan di sini: baca diagram kelas di README.
- * Method untuk bagian berikutnya (setSupplier, getSupplier, dan seterusnya) kamu
+ * Method untuk bagian berikutnya (setSupplier, getSupplier, dan seterusnya)
+ * kamu
  * tambahkan sendiri sesuai diagram di bagian tersebut.
  *
- * Kerangka field (lengkapi tipe dan nama dari diagram), letakkan di atas constructor:
- *   public String code;
- *   public ____ name;
- *   public ____ year;
- *   public ____ available;
+ * Kerangka field (lengkapi tipe dan nama dari diagram), letakkan di atas
+ * constructor:
+ * public String code;
+ * public ____ name;
+ * public ____ year;
+ * public ____ available;
  */
 public class Beverage {
 
@@ -26,22 +28,24 @@ public class Beverage {
 
     /**
      * Membuat minuman baru yang masih ada stoknya (belum terjual).
-     * Bagian 3: code tidak boleh kosong; name dan year divalidasi seperti setter-nya.
+     * Bagian 3: code tidak boleh kosong; name dan year divalidasi seperti
+     * setter-nya.
      */
     public Beverage(String code, String name, int year) {
         // TODO Bantuan: isi semua field. Minuman baru: apakah sudah terjual atau belum?
-        // Bagian 3: aturan validasi nama dan tahun sama dengan setter. Bisakah constructor
+        // Bagian 3: aturan validasi nama dan tahun sama dengan setter. Bisakah
+        // constructor
         // memakai setter-nya?
         //
         // Kerangka (Bagian 2):
-        //   this.code = code;
-        //   this.name = ____;
-        //   this.year = ____;
-        //   this.available = ____;
+        // this.code = code;
+        // this.name = ____;
+        // this.year = ____;
+        // this.available = ____;
         //
         // Kerangka (Bagian 3): ganti dua baris name dan year dengan pemanggilan setter.
-        //   setName(____);
-        //   setYear(____);
+        // setName(____);
+        // setYear(____);
         if (code == null || code.trim().isEmpty()) {
             throw new IllegalArgumentException("Code cannot be null or empty");
         }
@@ -56,7 +60,7 @@ public class Beverage {
         // TODO Bantuan: kembalikan data yang disimpan constructor.
         //
         // Kerangka:
-        //   return ____;
+        // return ____;
         return code;
     }
 
@@ -75,7 +79,7 @@ public class Beverage {
         // TODO Bantuan: field apa yang menyimpan status stok?
         //
         // Kerangka:
-        //   return ____;
+        // return ____;
         return available;
     }
 
@@ -88,11 +92,11 @@ public class Beverage {
         // Method ini punya dua jalur return yang berbeda.
         //
         // Kerangka:
-        //   if (____) {
-        //       return false;
-        //   }
-        //   ____ = false;
-        //   return true;
+        // if (____) {
+        // return false;
+        // }
+        // ____ = false;
+        // return true;
         if (!available) {
             return false;
         }
@@ -105,8 +109,8 @@ public class Beverage {
         // TODO Bantuan: satu baris saja. Status apa yang berubah?
         //
         // Kerangka:
-        //   ____ = true;
-       available = true;
+        // ____ = true;
+        available = true;
     }
 
     /**
@@ -118,10 +122,10 @@ public class Beverage {
         // memeriksa teks kosong atau hanya spasi. Jangan lupa kemungkinan null.
         //
         // Kerangka:
-        //   if (name == null || ____) {
-        //       throw new IllegalArgumentException("____");
-        //   }
-        //   this.name = name;
+        // if (name == null || ____) {
+        // throw new IllegalArgumentException("____");
+        // }
+        // this.name = name;
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
@@ -136,10 +140,10 @@ public class Beverage {
         // TODO Bantuan: pola yang sama dengan setName. Apa syarat tahun yang valid?
         //
         // Kerangka:
-        //   if (year ____ 2000) {
-        //       throw new IllegalArgumentException("____");
-        //   }
-        //   this.year = year;
+        // if (year ____ 2000) {
+        // throw new IllegalArgumentException("____");
+        // }
+        // this.year = year;
         if (year < 2000) {
             throw new IllegalArgumentException("Year cannot be less than 2000");
         }
@@ -150,8 +154,7 @@ public class Beverage {
         return supplier;
     }
 
-    public Supplier setSupplier(Supplier supplier) {
+    public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
-        return supplier;
     }
 }
